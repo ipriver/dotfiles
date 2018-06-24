@@ -7,4 +7,4 @@ if [ ! -d "$DIRECTORY" ]; then
 fi
 
 cp alacritty.yml $DIRECTORY
-
+cp .vimrc $HOME
