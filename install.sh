@@ -3,7 +3,7 @@
 DIRECTORY="$HOME/.config/alacritty"
 
 if [ ! -d "$DIRECTORY" ]; then
-	mkdir $DIRECOTRY	
+	mkdir -pv "$DIRECTORY"
 fi
 
 cp alacritty.yml $DIRECTORY
