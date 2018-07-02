@@ -18,3 +18,9 @@ cp .tmux.conf $DIRECOTRY
 cp .vimrc $HOME
 
 vim -c ":PlugInstall" -c ":qa"
+
+# neovim
+if [ ! -d "$HOME/.config/nvim" ]; then
+	mkdir -p "$HOME/.config/nvim"
+fi
+ln $HOME/.vimrc $HOME/.config/nvim/init.vim

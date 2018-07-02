@@ -107,8 +107,8 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias zshrc="vim ~/.zshrc"
-alias vimrc="vim ~/.vimrc"
+alias zshrc="nvim ~/.zshrc"
+alias vimrc="nvim ~/.vimrc"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
