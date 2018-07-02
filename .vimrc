@@ -10,12 +10,27 @@ endif
 """""""""""""""""""""""""""""""""
 call plug#begin()
 
+"""""""""""""""""""""""""""""""""
 " colorscheme
 Plug 'morhetz/gruvbox'	
+let g:gruvbox_italic=1
+let g:gruvbox_contrast_dark="soft"
+set background=dark
+"""""""""""""""""""""""""""""""""
 
+"""""""""""""""""""""""""""""""""
+" Git
+Plug 'vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+"""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""
+" NEEED TO BE FIIIXXXXXEEEEED
 " airline bar
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+" let g:airline_powerline_fonts=1
+" let g:Powerline_symbols='unicode'
 
 """""""""""""""""""""""""""""""""
 " Go
@@ -67,12 +82,16 @@ Plug 'majutsushi/tagbar' " tags
 nmap <F8> :TagbarToggle<CR>
 """""""""""""""""""""""""""""""""
 
+Plug 'jiangmiao/auto-pairs' " bracket pairs
+" Plug 'scrooloose/syntastic' " syntax checking plugin
 Plug 'AndrewRadev/splitjoin.vim'
+Plug 'editorconfig/editorconfig-vim' " editorconfig file
 call plug#end()
 
 """"""""""""""""""""""
 "      Settings      "
 """"""""""""""""""""""
+set termguicolors " enable truecolor
 set nocompatible                " Enables us Vim specific features
 filetype off                    " Reset filetype detection first ...
 filetype plugin indent on       " ... and enable filetype detection
@@ -139,13 +158,8 @@ endif
 
 
 let g:airline#extensions#tabline#enabled = 1
-set termguicolors " enable truecolor
 
-" gruvbox configs
-let g:gruvbox_italic=1
-let g:gruvbox_contrast_dark="hard"
-colorscheme gruvbox
-set background=dark
 
 " nerdtree configs
 " map <C-n> :NERDTreeToggle<CR>
+colorscheme gruvbox
