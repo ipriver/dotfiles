@@ -1,14 +1,23 @@
-"    autodownload vim-plug	"
 """""""""""""""""""""""""""""""""
+"    autodownload vim-plug	"
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 """""""""""""""""""""""""""""""""
-"	import plugins		"
+
 """""""""""""""""""""""""""""""""
+"	import plugins		"
 call plug#begin()
+
+" smooth scroll
+" Plug 'yuttie/comfortable-motion.vim' Alternative
+Plug 'terryma/vim-smooth-scroll'
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
+noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 
 """""""""""""""""""""""""""""""""
 " colorscheme
@@ -20,8 +29,12 @@ set background=dark
 
 """""""""""""""""""""""""""""""""
 " Git
-Plug 'vim-fugitive'
+Plug 'tpope/vim-fugitive'
+
+" Git signs +-~
 Plug 'airblade/vim-gitgutter'
+set updatetime=100 " add updatetime for signs
+let g:gitgutter_override_sign_column_highlight = 1 " colortheme bg color
 """""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""
@@ -62,9 +75,6 @@ set completeopt+=noinsert
 set completeopt+=noselect
 """""""""""""""""""""""""""""""""
 
-Plug 'SirVer/ultisnips'	" snippets
-Plug 'ctrlpvim/ctrlp.vim'
-
 """""""""""""""""""""""""""""""""
 " configure relative vim numbers
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
@@ -82,6 +92,8 @@ Plug 'majutsushi/tagbar' " tags
 nmap <F8> :TagbarToggle<CR>
 """""""""""""""""""""""""""""""""
 
+Plug 'SirVer/ultisnips'	" snippets
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'jiangmiao/auto-pairs' " bracket pairs
 " Plug 'scrooloose/syntastic' " syntax checking plugin
 Plug 'AndrewRadev/splitjoin.vim'
@@ -162,4 +174,5 @@ let g:airline#extensions#tabline#enabled = 1
 
 " nerdtree configs
 " map <C-n> :NERDTreeToggle<CR>
+
 colorscheme gruvbox
