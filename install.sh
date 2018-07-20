@@ -1,26 +1,29 @@
 #!/bin/bash
+set -euo pipefail
 
-# Oh-my-zsh install
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+echo loler
 
-DIRECTORY="$HOME/.config/alacritty"
-if [ ! -d "$DIRECTORY" ]; then
-	mkdir -p "$DIRECTORY"
-fi
-cp alacritty.yml $DIRECTORY
+# # Oh-my-zsh install
+# sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
-DIRECTORY="$HOME/.tmux"
-if [ ! -d "$DIRECTORY" ]; then
-	mkdir -p "$DIRECTORY"
-fi
-cp .tmux.conf $DIRECOTRY
+# DIRECTORY="$HOME/.config/alacritty"
+# if [ ! -d "$DIRECTORY" ]; then
+# 	mkdir -p "$DIRECTORY"
+# fi
+# cp alacritty.yml $DIRECTORY
 
-cp .vimrc $HOME
+# DIRECTORY="$HOME/.tmux"
+# if [ ! -d "$DIRECTORY" ]; then
+# 	mkdir -p "$DIRECTORY"
+# fi
+# cp .tmux.conf $DIRECOTRY
 
-vim -c ":PlugInstall" -c ":qa"
+# cp .vimrc $HOME
 
-# neovim
-if [ ! -d "$HOME/.config/nvim" ]; then
-	mkdir -p "$HOME/.config/nvim"
-fi
-ln $HOME/.vimrc $HOME/.config/nvim/init.vim
+# vim -c ":PlugInstall" -c ":qa"
+
+# # neovim
+# if [ ! -d "$HOME/.config/nvim" ]; then
+# 	mkdir -p "$HOME/.config/nvim"
+# fi
+# ln $HOME/.vimrc $HOME/.config/nvim/init.vim
