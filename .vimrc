@@ -13,8 +13,12 @@ call plug#begin()
 
 "	NerdTree
 " ------------------------------->
-" Plug 'scrooloose/nerdtree'
-" map <F7> :NERDTreeToggle<CR>
+ Plug 'scrooloose/nerdtree'
+ noremap <F2> :NERDTreeToggle<CR>
+ let g:NERDTreeMinimalUI=1
+ " Single-click to toggle directory nodes, double-click to open non-directory nodes.
+ let g:NERDTreeMouseMode=2
+ let g:NERDTreeHijackNetrw=0
 " <-------------------------------
 
 "	C C++
@@ -23,8 +27,8 @@ Plug 'vim-scripts/c.vim', {'for': ['c', 'cpp']}
 " <-------------------------------
 
 "	smooth scroll
-" Plug 'yuttie/comfortable-motion.vim' Alternative
 " ------------------------------->
+" Plug 'yuttie/comfortable-motion.vim' Alternative
 Plug 'terryma/vim-smooth-scroll'
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
 noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
@@ -46,26 +50,27 @@ Plug 'neomake/neomake'
 " <-------------------------------
 
 
-"""""""""""""""""""""""""""""""""
 " Git
+" ------------------------------->
 Plug 'tpope/vim-fugitive'
 " Git signs +-~
 Plug 'airblade/vim-gitgutter'
 set updatetime=100 " add updatetime for signs
 let g:gitgutter_override_sign_column_highlight = 1 " colortheme bg color
-"""""""""""""""""""""""""""""""""
+" <-------------------------------
 
 
-"""""""""""""""""""""""""""""""""
 " NEEED TO BE FIIIXXXXXEEEEED
 " airline bar
+" ------------------------------->
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " let g:airline_powerline_fonts=1
 " let g:Powerline_symbols='unicode'
+" <-------------------------------
 
-"""""""""""""""""""""""""""""""""
 " Go
+" ------------------------------->
 Plug 'fatih/vim-go'
 " gocode autocomplete
 if has('nvim')
@@ -73,10 +78,11 @@ if has('nvim')
 else
   Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' } 
 endif
-"""""""""""""""""""""""""""""""""
+" <-------------------------------
 
-"""""""""""""""""""""""""""""""""
+
 " autocomplete async
+" ------------------------------->
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
@@ -94,12 +100,12 @@ set completeopt+=noinsert
 set completeopt+=noselect
 Plug 'tweekmonster/deoplete-clang2' " for C language
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' } " for JS
+Plug 'zchee/deoplete-jedi' " Python
+" <-------------------------------
 
-"""""""""""""""""""""""""""""""""
 
-
-"""""""""""""""""""""""""""""""""
 " configure relative vim numbers
+" ------------------------------->
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 set number relativenumber
 augroup numbertoggle
@@ -107,12 +113,12 @@ augroup numbertoggle
   autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup END
-"""""""""""""""""""""""""""""""""
+" <-------------------------------
 
 
-"""""""""""""""""""""""""""""""""
 " HTML CSS
 " Emmet
+" ------------------------------->
 Plug 'mattn/emmet-vim'
 let g:user_emmet_install_global = 0
 augroup emmetgroup
@@ -121,26 +127,29 @@ augroup emmetgroup
 augroup END
 " CSS colors
 Plug 'ap/vim-css-color' " highlight colors
-"""""""""""""""""""""""""""""""""
+" <-------------------------------
 
 
-"""""""""""""""""""""""""""""""""
 " Tagbar
+" ------------------------------->
 Plug 'majutsushi/tagbar' " tags
 noremap <F8> :TagbarToggle<CR>
 let g:tagbar_autofocus = 1
-"""""""""""""""""""""""""""""""""
+" <-------------------------------
 
+" syntastic
+" Plug 'nvie/vim-flake8'
+" Plug 'scrooloose/syntastic' " syntax checking plugin
 
+Plug 'mhinz/vim-startify' " vim starting page
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-commentary' " fast comments
-" Plug 'SirVer/ultisnips'	" snippets
+Plug 'SirVer/ultisnips'	" snippets
 Plug 'jiangmiao/auto-pairs' " bracket pairs
-Plug 'scrooloose/syntastic' " syntax checking plugin
 Plug 'Yggdroot/indentLine' " display indentLine
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'editorconfig/editorconfig-vim' " editorconfig file
@@ -150,7 +159,6 @@ call plug#end()
 
 "	Settings                  
 " ------------------------------->
-set termguicolors 		" enable truecolor
 set nocompatible                " Enables us Vim specific features
 filetype off                    " Reset filetype detection first ...
 filetype plugin indent on       " ... and enable filetype detection
@@ -186,6 +194,10 @@ set lazyredraw                  " Wait to redraw
 set mouse=a			" enable mouse
 " set foldmethod=syntax	" foldmethod groups of lines with the same indent form a fold
 let mapleader=','
+
+if has('termguicolors')
+	set termguicolors 		" enable truecolor
+endif
 
 " Enable to copy to clipboard for operations like yank, delete, change and put
 " http://stackoverflow.com/questions/20186975/vim-mac-how-to-copy-to-clipboard-without-pbcopy
@@ -246,18 +258,19 @@ nnoremap <silent> [b :bprevious<CR>
 nnoremap <silent> ]b :bnext<CR>
 nnoremap <silent> [B :bfirst<CR>
 nnoremap <silent> ]B :blast<CR>
-" disable arrow keys
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
+" Repurpose cursor keys (accessible near homerow via SpaceFN layout) for one
+" of my most oft-use key sequences.
+nnoremap <silent> <Up> :cprevious<CR>
+nnoremap <silent> <Down> :cnext<CR>
+nnoremap <silent> <Left> :cpfile<CR>
+nnoremap <silent> <Right> :cnfile<CR>
 " Some useful quickfix shortcuts for quickfix
 map <C-n> :cn<CR>
 map <C-m> :cp<CR>
 nnoremap <leader>a :cclose<CR>
 " Fast saving
 nnoremap <leader>w :w!<cr>
-nnoremap <silent> <leader>q :q!<CR>
+nnoremap <silent> <leader>q :q<CR>
 
 " Center the screen
 nnoremap <space> zz
@@ -363,4 +376,8 @@ call neomake#configure#automake('nrwi', 500)
 colorscheme gruvbox
 let g:indentLine_enabled = 1
 " <-------------------------------
+
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
