@@ -100,7 +100,9 @@ set completeopt+=noinsert
 set completeopt+=noselect
 Plug 'tweekmonster/deoplete-clang2' " for C language
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' } " for JS
-Plug 'zchee/deoplete-jedi' " Python
+" Python
+Plug 'zchee/deoplete-jedi'
+let g:deoplete#sources#jedi#show_docstring = 1
 " <-------------------------------
 
 
@@ -140,7 +142,7 @@ let g:tagbar_autofocus = 1
 " syntastic
 " Plug 'nvie/vim-flake8'
 " Plug 'scrooloose/syntastic' " syntax checking plugin
-
+Plug 'hexdigest/gounit-vim'
 Plug 'mhinz/vim-startify' " vim starting page
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
@@ -336,6 +338,7 @@ nnoremap Y y$
 " Use ; as :
 " Very convenient as you don't have to press shift to run commands
 nnoremap ; :
+vnoremap ; :
 " alternative use for fFtT next search
 nnoremap : ;
 
@@ -378,6 +381,37 @@ let g:indentLine_enabled = 1
 " <-------------------------------
 
 let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
+" let pipenv_venv_path = system('pipenv --venv')
+" if shell_error == 0
+" 	let venv_path = substitute(pipenv_venv_path, '\n', '', '')
+" 	let g:python_host_prog = venv_path . 'bin/python'
+" 	let g:python3_host_prog = venv_path . 'bin/python'
+" endif
+" let g:python3_host_prog = '/home/ipriver/4Neovim3/bin/python'
+let g:go_fmt_command = "goimports"
+let g:go_autodetect_gopath = 1
+let g:go_list_type = "quickfix"
+
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_generate_tags = 1
+map <C-n> :cnext<CR>
+map <C-m> :cprevious<CR>
+nnoremap <leader>a :cclose<CR>
+autocmd FileType go nmap <leader>b  <Plug>(go-build)
+autocmd FileType go nmap <leader>r  <Plug>(go-run)
+
+
+
+function! g:Flags()
+	if !executable('go')
+		echohl Error | echomsg "go executable not found." | echohl None
+		return -1
+	endif
+endfunction
