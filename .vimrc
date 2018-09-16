@@ -30,10 +30,9 @@ Plug 'SirVer/ultisnips'                                          " snippets
 Plug 'vim-scripts/c.vim', {'for': ['c', 'cpp']}
 Plug 'nvie/vim-flake8' 
 Plug 'jiangmiao/auto-pairs'                                      " bracket pairs
-Plug 'neomake/neomake'
-
 Plug 'fatih/vim-go'
 
+Plug 'neomake/neomake'
 Plug 'scrooloose/syntastic'                                      " syntax checking plugin
 Plug 'rhysd/vim-grammarous'                                      " grammar check
 " Plug 'sheerun/vim-polyglot'                                    " syntax for a lot of filetypes
@@ -398,7 +397,7 @@ augroup golang
 	autocmd FileType go nmap <silent> <leader>r  <Plug>(go-run)
 	autocmd FileType go nmap <silent> <Leader>i <Plug>(go-info)
 	autocmd FileType go nmap <silent> <leader>t  <Plug>(go-test)
-	autocmd FileType go nmap < <silent> <Leader>ct <Plug>(go-coverage-toggle)
+	autocmd FileType go nmap <silent> <Leader>ct <Plug>(go-coverage-toggle)
 	autocmd FileType go nmap <silent> <Leader>x <Plug>(go-doc-vertical)
 	autocmd FileType go nnoremap <silent> <leader>b :<C-u>call <SID>build_go_files()<CR>
 	" Use GoFmt and GoImport
