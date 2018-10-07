@@ -35,7 +35,7 @@ Plug 'fatih/vim-go'
 Plug 'neomake/neomake'
 Plug 'scrooloose/syntastic'                                      " syntax checking plugin
 Plug 'rhysd/vim-grammarous'                                      " grammar check
-" Plug 'sheerun/vim-polyglot'                                    " syntax for a lot of filetypes
+Plug 'sheerun/vim-polyglot'                                    " syntax for a lot of filetypes
 if has('nvim')
 	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
@@ -52,6 +52,9 @@ if has('nvim')
 else
   Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' } 
 endif
+Plug 'zchee/deoplete-jedi'
+Plug 'w0rp/ale'
+Plug 'uber/prototool', { 'rtp':'vim/prototool' }
 call plug#end()
 " <-------------------------------
 
@@ -338,6 +341,30 @@ call neomake#configure#automake('nrwi', 500)
 let g:deoplete#enable_at_startup = 1
 set completeopt+=noinsert " neocomplete like
 set completeopt+=noselect " deoplete.nvim recommend
+
+" prototool && ale
+" We recommend setting just this for Golang, as well as the necessary set for proto.
+let g:ale_linters = {
+\   'go': ['golint'],
+\   'proto': ['prototool'],
+\}
+" We recommend you set this.
+let g:ale_lint_on_text_changed = 'never'
+" Set to 'lint' to not do code generation.
+" Set to 'compile' to not do linting either and just compile without code generation.
+"let g:ale_proto_prototool_command = 'compile'
+
+" ,f will toggle formatting on and off.
+" Change to PrototoolFormatFixToggle to toggle with --fix instead.
+nnoremap <silent> <leader>f :call PrototoolFormatToggle()<CR>
+" ,c will toggle create on and off.
+nnoremap <silent> <leader>c :call PrototoolCreateToggle()<CR>
+" Uncomment this to enable formatting by default.
+"call PrototoolFormatEnable()
+" Uncomment this to enable formatting with --fix by default.
+"call PrototoolFormatFixEnable()
+" Uncomment this to disable creating Protobuf files from a template by default.
+"call PrototoolCreateDisable()
 
 " vim-go
 let g:go_autodetect_gopath = 1
