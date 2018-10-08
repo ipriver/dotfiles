@@ -34,7 +34,7 @@ plugins=(
 )
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/ipriver/.oh-my-zsh"
+export ZSH="/Users/${USER}/.oh-my-zsh"
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
