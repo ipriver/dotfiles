@@ -57,6 +57,11 @@ alias zshrc="nvim ~/.zshrc"
 alias vimrc="nvim ~/.vimrc"
 alias alacrc="nvim ~/.config/alacritty/alacritty.yml"
 
+alias tis="tig status"
+alias gis="git status"
+alias ls='ls -GpF' # Mac OSX specific
+alias ll='ls -alGpF' # Mac OSX specific
+
 export GOPATH="${HOME}/go"
 export GOROOT="$(brew --prefix golang)/libexec"
 export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
