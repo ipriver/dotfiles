@@ -1,12 +1,23 @@
-all:
-	mkdir -p ~/.config/nvim
-	mkdir -p ~/.config/alacritty
 
-	[ -f ~/.config/nvim/init.vim ] || ln -s $(PWD)/vimrc ~/.config/nvim/init.vim
-	[ -f ~/.config/alacritty/alacritty.yml ] || ln -s $(PWD)/alacritty.yml ~/.config/alacritty/alacritty.yml
-	[ -f ~/.vimrc ] || ln -s $(PWD)/vimrc ~/.vimrc
-	[ -f ~/.zshrc ] || ln -s $(PWD)/zshrc ~/.zshrc
-	[ -f ~/.tmux.conf ] || ln -s $(PWD)/tmux.conf ~/.tmux.conf
+all: zsh alacritty vim nvim tmux
+
+zsh:
+	[ -f ~/.zshrc ] || ln -s zshrc ~/.zshrc
+
+alacritty:
+	mkdir -p ~/.config/alacritty
+	[ -f ~/.config/alacritty/alacritty.yml ] || ln -s alacritty.yml ~/.config/alacritty/alacritty.yml
+
+vim:
+	[ -f ~/.vimrc ] || ln -s vimrc ~/.vimrc
+
+nvim:
+	mkdir -p ~/.config/nvim
+	[ -f ~/.config/nvim/init.vim ] || ln -s vimrc ~/.config/nvim/init.vim
+
+tmux:
+	[ -f ~/.tmux.conf ] || ln -s -f .tmux/tmux.conf ~/.tmux.conf
+	[ -f ~/.tmux.conf.local ] || ln -s tmux.conf.local ~/.tmux.conf.local
 
 clean:
 	rm -f ~/.vimrc
