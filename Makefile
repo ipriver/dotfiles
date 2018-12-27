@@ -1,5 +1,7 @@
+.PHONY: all all-linux
 
-all: zsh alacritty vim nvim tmux
+all: zsh alacritty vim nvim tmux brew
+all-linux: zsh alacritty vim nvim tmux
 
 zsh:
 	[ -f ~/.zshrc ] || ln -s zshrc ~/.zshrc
@@ -15,6 +17,12 @@ nvim:
 	mkdir -p ~/.config/nvim
 	[ -f ~/.config/nvim/init.vim ] || ln -s vimrc ~/.config/nvim/init.vim
 
+brew:
+	brew bundle install
+
+brew-update:
+	brew bundle dump --force
+
 tmux:
 	[ -f ~/.tmux.conf ] || ln -s -f .tmux/tmux.conf ~/.tmux.conf
 	[ -f ~/.tmux.conf.local ] || ln -s tmux.conf.local ~/.tmux.conf.local
@@ -26,4 +34,3 @@ clean:
 	rm -f ~/.zshrc
 	rm -f ~/.tmux.conf
 
-.PHONY: all
