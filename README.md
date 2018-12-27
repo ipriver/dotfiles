@@ -9,9 +9,13 @@ brew bundle
 make  
 ```
 MacOS
+```bash
 make
-or
+# or
 make all
+```
 
 Linux
+```bash
 make all-linux
+```
