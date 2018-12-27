@@ -27,10 +27,14 @@ tmux:
 	[ -f ~/.tmux.conf ] || ln -s -f .tmux/tmux.conf ~/.tmux.conf
 	[ -f ~/.tmux.conf.local ] || ln -s tmux.conf.local ~/.tmux.conf.local
 
+git:
+	[ -f ~/.gitconfig ] || ln -s gitconfig ~/.gitconfig
+
 clean:
 	rm -f ~/.vimrc
 	rm -f ~/.config/nvim/init.vim
 	rm -f ~/.config/alacritty/alacritty.yml
 	rm -f ~/.zshrc
 	rm -f ~/.tmux.conf
+	rm -f ~/.gitconfig
 
