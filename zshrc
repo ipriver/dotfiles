@@ -28,7 +28,7 @@ plugins=(
   vscode
   node # fast node-docs
   yarn
-  tmux
+  # tmux # reports error in alacritty
   colored-man-pages
   git
 )

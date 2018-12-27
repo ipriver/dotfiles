@@ -1,4 +1,4 @@
-"	import plugins		 
+"	import plugins
 " ------------------------------->
 call plug#begin()
 Plug 'morhetz/gruvbox'
@@ -28,7 +28,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'SirVer/ultisnips'                                          " snippets
 Plug 'vim-scripts/c.vim', {'for': ['c', 'cpp']}
-Plug 'nvie/vim-flake8' 
+Plug 'nvie/vim-flake8'
 Plug 'jiangmiao/auto-pairs'                                      " bracket pairs
 Plug 'fatih/vim-go'
 
@@ -50,15 +50,15 @@ Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' } " for JS
 if has('nvim')
   Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 else
-  Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' } 
+  Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
 endif
-Plug 'zchee/deoplete-jedi'
+" Plug 'zchee/deoplete-jedi'
 Plug 'w0rp/ale'
 Plug 'uber/prototool', { 'rtp':'vim/prototool' }
 call plug#end()
 " <-------------------------------
 
-"	Settings                  
+"	Settings
 " ------------------------------->
 syntax on
 set nocompatible               " Enables us Vim specific features
@@ -138,9 +138,9 @@ augroup filetypedetect
 	command! -nargs=* -complete=help Help vertical belowright help <args>
 	autocmd FileType help wincmd L
 	autocmd FileType vim set tabstop=2|set shiftwidth=2|set noexpandtab
-	autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4 
+	autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 	autocmd BufRead,BufNewFile *.gotmpl set filetype=gotexttmpl
-  
+
   autocmd BufNewFile,BufRead *.ino setlocal noet ts=4 sw=4 sts=4
   autocmd BufNewFile,BufRead *.txt setlocal noet ts=4 sw=4
   autocmd BufNewFile,BufRead *.md setlocal noet ts=4 sw=4
@@ -149,7 +149,7 @@ augroup filetypedetect
   autocmd BufNewFile,BufRead *.hcl setlocal expandtab shiftwidth=2 tabstop=2
   autocmd BufNewFile,BufRead *.sh setlocal expandtab shiftwidth=2 tabstop=2
   autocmd BufNewFile,BufRead *.proto setlocal expandtab shiftwidth=2 tabstop=2
-  
+
   autocmd FileType json setlocal expandtab shiftwidth=2 tabstop=2
 augroup END
 
@@ -216,7 +216,7 @@ if has('nvim')
   tnoremap <C-j> <C-w>j
   tnoremap <C-k> <C-w>k
   tnoremap <C-l> <C-w>l
- 
+
   " Open terminal in vertical, horizontal and new tab
   nnoremap <leader>tv :vsplit<cr>:term<CR>
   nnoremap <leader>ts :split<cr>:term<CR>
@@ -255,7 +255,7 @@ vnoremap ; :
 " alternative use for fFtT next search
 nnoremap : ;
 " reverse fFtT
-nnoremap <leader>: , 
+nnoremap <leader>: ,
 
 "	Abbreviations
 iabbrev @@ g1ran1q@gmail.com
@@ -263,14 +263,14 @@ iabbrev gthb https://github.com/ipriver
 iabbrev Todate <C-R>=strftime("%d-%b-%Y")<CR>
 " <-------------------------------
 
-"	Plugin configs                   
+"	Plugin configs
 " ------------------------------->
 "	colorscheme
 let g:gruvbox_italic=1
 let g:gruvbox_contrast_dark="soft"
 let g:molokai_original = 1
 set background=dark
-colorscheme gruvbox
+colorscheme molokai
 
 "	NerdTree
  noremap <F2> :NERDTreeToggle<CR>

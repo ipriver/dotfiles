@@ -8,3 +8,10 @@ brew bundle
 # run makefile all
 make  
 ```
+MacOS
+make
+or
+make all
+
+Linux
+make all-linux
