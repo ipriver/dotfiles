@@ -35,7 +35,7 @@ plugins=(
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/${USER}/.oh-my-zsh"
-source $ZSH/oh-my-zsh.sh
+# source $ZSH/oh-my-zsh.sh # speed bottleneck
 
 # User configuration
 
@@ -63,7 +63,7 @@ alias ls='ls -GpF' # Mac OSX specific
 alias ll='ls -alGpF' # Mac OSX specific
 
 export GOPATH="${HOME}/go"
-export GOROOT="$(brew --prefix golang)/libexec"
+# export GOROOT="$(brew --prefix golang)/libexec" # speed bottleneck
 export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 export MYVIMRC="${HOME}/.vimrc"
 

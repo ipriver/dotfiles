@@ -1,7 +1,7 @@
 .PHONY: all all-linux
 
-all: zsh alacritty vim nvim tmux brew
-all-linux: zsh alacritty vim nvim tmux
+all: zsh alacritty vim nvim tmux brew git
+all-linux: zsh alacritty vim nvim tmux git bash
 
 zsh:
 	[ -f ~/.zshrc ] || ln -s zshrc ~/.zshrc
@@ -29,6 +29,9 @@ tmux:
 
 git:
 	[ -f ~/.gitconfig ] || ln -s gitconfig ~/.gitconfig
+
+bash:
+	[ -f ~/.bashrc ] || ln -s bashrc ~/.bashrc
 
 clean:
 	rm -f ~/.vimrc
