@@ -1,6 +1,7 @@
 ZSH_THEME=""
 
 ENABLE_CORRECTION="false"
+DISABLE_UPDATE_PROMPT=true
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
@@ -9,10 +10,10 @@ plugins=(
   battery
   brew
   colorize
-  zsh-autosuggestions
+  # zsh-autosuggestions
   zsh-syntax-highlighting
   sudo
-  command-not-found
+  # command-not-found
   cp
   history
   web-search
@@ -24,7 +25,6 @@ plugins=(
   pip
   python
   redis-cli
-  vi-mode
   vscode
   node # fast node-docs
   yarn
@@ -50,7 +50,7 @@ else
 fi
 
 # ssh
-export SSH_KEY_PATH="~/.ssh/rsa_id"
+export SSH_KEY_PATH="~/.sbassh/rsa_id"
 
 # For a full list of active aliases, run `alias`.
 alias zshrc="nvim ~/.zshrc"
@@ -74,3 +74,4 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 autoload -U promptinit; promptinit
 prompt pure
 
+export PATH="/usr/local/opt/ruby/bin:$PATH"
