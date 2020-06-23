@@ -1,21 +1,46 @@
-.PHONY: all all-linux
+.PHONY: error all-mac all-linux alacritty zsh vim nvim brew brew-update tmux git bash clean
 
-all: zsh alacritty vim nvim tmux brew git
+ALACRITTY_CONF_DIR = $(HOME)/.config/alacritty/
+NEOVIM_CONF_DIR = $(HOME)/.config/nvim
+VIM_CONF_DIR = $(HOME)
+ZSH_CONF_DIR = $(HOME)
+BASH_CONF_DIR = $(HOME)
+GIT_CONF_DIR = $(HOME)
+TMUX_CONF_DIR = $(HOME)
+
+error:
+	@echo "Please choose one of the following full installation targets: all-mac, all-linux"
+	@echo "Or use singleton targets: zsh, alacritty, vim, nvim, brew, brew-update, tmux, git, bash, clean"
+	@exit 2
+
+all-mac: zsh alacritty vim nvim tmux brew git
 all-linux: zsh alacritty vim nvim tmux git bash
 
 zsh:
-	[ -f ~/.zshrc ] || ln -s $(PWD)/zshrc ~/.zshrc
+	@echo "$@: Linking zsh config into $(ZSH_CONF_DIR) directory."
+	@if [ -f $(ZSH_CONF_DIR)/.zshrc ]; then rm -f $(ZSH_CONF_DIR)/.zshrc; fi;
+	@ln -s $(shell pwd)/zshrc $(ZSH_CONF_DIR)/.zshrc
+	@echo "$@: Complete"
 
 alacritty:
-	mkdir -p ~/.config/alacritty
-	[ -f ~/.config/alacritty/alacritty.yml ] || ln -s $(PWD)/alacritty.yml ~/.config/alacritty/alacritty.yml
+	@echo "$@: Linking Alacritty config into $(ALACRITTY_CONF_DIR) directory."
+	@mkdir -p $(ALACRITTY_CONF_DIR)
+	@if [ -f $(ALACRITTY_CONF_DIR)/alacritty.yml ]; then rm -f $(ALACRITTY_CONF_DIR)/alacritty.yml; fi;
+	@ln -s $(shell pwd)/alacritty.yml $(ALACRITTY_CONF_DIR)/alacritty.yml
+	@echo "$@: Complete"
 
 vim:
-	[ -f ~/.vimrc ] || ln -s $(PWD)/vimrc ~/.vimrc
+	@echo "$@: Linking Vim config into $(VIM_CONF_DIR) directory."
+	@if [ -f $(VIM_CONF_DIR)/.vimrc ]; then rm -f $(VIM_CONF_DIR)/.vimrc; fi;
+	@ln -s $(shell pwd)/vimrc $(VIM_CONF_DIR)/.vimrc
+	@echo "$@: Complete"
 
 nvim:
-	mkdir -p ~/.config/nvim
-	[ -f ~/.config/nvim/init.vim ] || ln -s v$(PWD)/imrc ~/.config/nvim/init.vim
+	@echo "$@: Linking NeoVim config into $(NEOVIM_CONF_DIR) directory."
+	@mkdir -p $(NEOVIM_CONF_DIR)
+	@if [ -f $(NEOVIM_CONF_DIR)/init.vim ]; then rm -f $(NEOVIM_CONF_DIR)/init.vim; fi;
+	@ln -s $(shell pwd)/vimrc $(NEOVIM_CONF_DIR)/init.vim
+	@echo "$@: Complete"
 
 brew:
 	brew bundle install
@@ -24,20 +49,33 @@ brew-update:
 	brew bundle dump --force
 
 tmux:
-	[ -f ~/.tmux.conf ] || ln -s -f $(PWD)/tmux/tmux.conf ~/.tmux.conf
-	[ -f ~/.tmux.conf.local ] || ln -s $(PWD)/tmux.conf.local ~/.tmux.conf.local
+	@if [ -d $(shell pwd)/.tmux ]; then rm -fr .tmux; fi;
+	@echo "$@: Cloning .tmux template config repository from gpakosz/.tmux"
+	@git clone https://github.com/gpakosz/.tmux.git
+	@echo "$@: Finished cloning"
+	@echo "$@: Linking tmux configs into $(TMUX_CONF_DIR) directory."
+	@ln -s $(shell pwd)/.tmux/tmux.conf $(TMUX_CONF_DIR)/.tmux.conf
+	@ln -s $(shell pwd)/tmux.conf.local $(TMUX_CONF_DIR)/.tmux.conf.lcaol
+	@echo "$@: Complete"
 
 git:
-	[ -f ~/.gitconfig ] || ln -s $(PWD)/gitconfig ~/.gitconfig
+	@echo "$@: Linking .gitconfig into $(GIT_CONF_DIR) directory."
+	@if [ -f $(GIT_CONF_DIR)/.gitconfig ]; then rm -f $(GIT_CONF_DIR)/.gitconfig; fi;
+	@ln -s $(shell pwd)/gitconfig $(GIT_CONF_DIR)/.gitconfig
+	@echo "$@: Complete"
 
 bash:
-	[ -f ~/.bashrc ] || ln -s $(PWD)/bashrc ~/.bashrc
+	@echo "$@: Linking bash config into $(BASH_CONF_DIR) directory."
+	@if [ -f $(BASH_CONF_DIR)/.bashrc ]; then rm -f $(BASH_CONF_DIR)/.bashrc; fi;
+	@ln -s $(shell pwd)/bashrc $(BASH_CONF_DIR)/.bashrc
+	@echo "$@: Complete"
 
 clean:
-	rm -f ~/.vimrc
-	rm -f ~/.config/nvim/init.vim
-	rm -f ~/.config/alacritty/alacritty.yml
-	rm -f ~/.zshrc
-	rm -f ~/.tmux.conf
-	rm -f ~/.gitconfig
+	rm -f $(VIM_CONF_DIR)/.vimrc
+	rm -f $(NEOVIM_CONF_DIR)/init.vim
+	rm -f $(ALACRITTY_CONF_DIR)/alacritty.yml
+	rm -f $(ZSH_CONF_DIR)/.zshrc
+	rm -f $(BASH_CONF_DIR)/.bashrc
+	rm -f $(TMUX_CONF_DIR)/.tmux.conf
+	rm -f $(GIT_CONF_DIR)/.gitconfig
 
