@@ -5,3 +5,5 @@
 	ui = auto
 [github]
 	user = ipriver
+[url "git@github.com:"]
+    insteadOf = https://github.com
