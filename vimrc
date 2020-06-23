@@ -1,6 +1,7 @@
 "	import plugins
 " ------------------------------->
 call plug#begin()
+Plug 'rust-lang/rust.vim'
 Plug 'morhetz/gruvbox'
 Plug 'fatih/molokai'
 Plug 'scrooloose/nerdtree'
@@ -45,7 +46,12 @@ else
 endif
 Plug 'zchee/deoplete-go', { 'do': 'make'}                        " is using gocode
 Plug 'tweekmonster/deoplete-clang2'                              " for C language
-Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' } " for JS
+" Use release branch
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Or build from source code
+" Install yarn from https://yarnpkg.com
+"Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+" Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' } " for JS
 " gocode autocomplete
 if has('nvim')
   Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
@@ -139,6 +145,9 @@ augroup filetypedetect
 	autocmd FileType help wincmd L
 	autocmd FileType vim set tabstop=2|set shiftwidth=2|set noexpandtab
 	autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
+	autocmd BufNewFile,BufRead *.c setlocal noexpandtab tabstop=4 shiftwidth=4
+	autocmd BufNewFile,BufRead *.cpp setlocal noexpandtab tabstop=4 shiftwidth=4
+	autocmd BufNewFile,BufRead *.h setlocal noexpandtab tabstop=4 shiftwidth=4
 	autocmd BufRead,BufNewFile *.gotmpl set filetype=gotexttmpl
 
   autocmd BufNewFile,BufRead *.ino setlocal noet ts=4 sw=4 sts=4
@@ -250,10 +259,10 @@ nnoremap Y y$
 
 " Use ; as :
 " Very convenient as you don't have to press shift to run commands
-nnoremap ; :
-vnoremap ; :
+"nnoremap ; :
+"vnoremap ; :
 " alternative use for fFtT next search
-nnoremap : ;
+"nnoremap : ;
 " reverse fFtT
 nnoremap <leader>: ,
 
