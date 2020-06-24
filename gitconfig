@@ -3,7 +3,22 @@
 	name = ipriver
 [color]
 	ui = auto
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
 [github]
 	user = ipriver
 [url "git@github.com:"]
     insteadOf = https://github.com
+[push]
+	default = current
+[github]
+    user = ipriver
+[alias]
+    st = status -sb
+    br = branch
+	co = checkout
+	di = diff
+	dic = diff --cachedz
+    lg = log -p

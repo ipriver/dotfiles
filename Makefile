@@ -1,4 +1,4 @@
-.PHONY: error all-mac all-linux alacritty zsh vim nvim brew brew-update tmux git bash clean
+.PHONY: error all-mac all-linux alacritty zsh vim nvim brew brew-update tmux git bash clean p10k
 
 ALACRITTY_CONF_DIR = $(HOME)/.config/alacritty/
 NEOVIM_CONF_DIR = $(HOME)/.config/nvim
@@ -7,6 +7,7 @@ ZSH_CONF_DIR = $(HOME)
 BASH_CONF_DIR = $(HOME)
 GIT_CONF_DIR = $(HOME)
 TMUX_CONF_DIR = $(HOME)
+P10K_CONF_DIR = $(HOME)
 
 error:
 	@echo "Please choose one of the following full installation targets: all-mac, all-linux"
@@ -20,6 +21,12 @@ zsh:
 	@echo "$@: Linking zsh config into $(ZSH_CONF_DIR) directory."
 	@if [ -f $(ZSH_CONF_DIR)/.zshrc ]; then rm -f $(ZSH_CONF_DIR)/.zshrc; fi;
 	@ln -s $(shell pwd)/zshrc $(ZSH_CONF_DIR)/.zshrc
+	@echo "$@: Complete"
+
+p10k:
+	@echo "$@: Linking p10k zsh theme config into $(P10K_CONF_DIR) directory."
+	@if [ -f $(P10K_CONF_DIR)/.p10k.zsh ]; then rm -f $(P10K_CONF_DIR)/.p10k.zsh; fi;
+	@ln -s $(shell pwd)/p10k.zsh $(P10K_CONF_DIR)/.p10k.zsh
 	@echo "$@: Complete"
 
 alacritty:
@@ -44,9 +51,6 @@ nvim:
 
 brew:
 	brew bundle install
-
-brew-update:
-	brew bundle dump --force
 
 tmux:
 	@if [ -d $(shell pwd)/.tmux ]; then rm -fr .tmux; fi;

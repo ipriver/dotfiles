@@ -1,16 +1,16 @@
 # Font configuration
 font:
   normal:
-    family: SF Mono Powerline
+    family: MesloLGS NF
     style: Regular
   bold:
-    family: SF Mono Powerline
+    family: MesloLGS NF
     style: Bold
   italic:
-    family: SF Mono Powerline
+    family: MesloLGS NF
     style: Italic
   bold_italic:
-    family: SF Mono Powerline
+    family: MesloLGS NF
     style: Bold Italic
   offset:
     x: 0
