@@ -1,21 +1,13 @@
-## My personal .dotfiles 
-#### [nvim](https://github.com/neovim/neovim), [zsh](https://github.com/robbyrussell/oh-my-zsh/), [tmux](https://github.com/tmux/tmux), [brew](https://github.com/Homebrew), [alacritty](https://github.com/jwilm/alacritty)
+## Pre-configured terminal .dotfiles that can be quickly installed
+#### [nvim](https://github.com/neovim/neovim), [zsh](https://github.com/robbyrussell/oh-my-zsh/), [tmux](https://github.com/tmux/tmux), [brew](https://github.com/Homebrew), [alacritty](https://github.com/jwilm/alacritty), [p10k](https://github.com/romkatv/powerlevel10k)
+![Screenshot](https://i.imgur.com/oHBsvEL.png "Screenshot")
 
-```shell
-# install all brew bundle deps
-brew bundle
-
-# run makefile all
-make  
-```
-MacOS
+#### MacOS
 ```bash
-make
-# or
-make all
+make all-mac
 ```
 
-Linux
+#### Linux
 ```bash
 make all-linux
 ```
