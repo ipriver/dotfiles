@@ -29,7 +29,6 @@ scrolling:
 
 live_config_reload: true
 background_opacity: 1.0
-dynamic_title: true
 
 window:
   dynamic_padding: true
