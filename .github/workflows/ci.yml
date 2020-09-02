@@ -19,5 +19,8 @@ jobs:
       
       - name: Install brew for MacOS
         if: startsWith(matrix.os, 'macos')
-        run: 
+        run: | 
           /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+          make brew
+          echo "brew packages insalled: $(brew list | wc -l | xargs)"
+          
