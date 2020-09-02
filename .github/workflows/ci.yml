@@ -15,7 +15,7 @@ jobs:
     steps:
       - name: Setup configs
         env:
-          os_type: format('all-{0}', ${{ matrix.config.kind }})
+          os_type: ${{ format('all-{0}', matrix.config.kind) }}
         run: make $os_type
  
 
