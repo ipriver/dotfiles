@@ -4,7 +4,7 @@ on: [push, pull_request]
 jobs:
   setup-configs:
     runs-on: ${{ matrix.config.os }}
-    timeout-minutes: 10
+    timeout-minutes: 30
     strategy: 
       matrix: 
         config: 
