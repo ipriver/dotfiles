@@ -14,7 +14,7 @@ error:
 	@echo "Or use singleton targets: zsh, alacritty, vim, nvim, brew, brew-update, tmux, git, bash, clean"
 	@exit 2
 
-all-mac: zsh alacritty vim nvim tmux brew git
+all-mac: zsh alacritty vim nvim tmux git
 all-linux: zsh alacritty vim nvim tmux git bash
 
 zsh:
