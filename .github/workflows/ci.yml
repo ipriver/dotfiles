@@ -13,6 +13,7 @@ jobs:
           - os: ubuntu-latest
             kind: linux
     steps:
+      - uses: actions/checkout@v2
       - name: Setup configs
         env:
           os_type: ${{ format('all-{0}', matrix.config.kind) }}
