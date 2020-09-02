@@ -1,0 +1,21 @@
+name: CI
+on: [push, pull_request]
+
+jobs:
+  setup-configs:
+    runs-on: ${{ matrix.config.os }}
+    timeout-minutes: 10
+    strategy: 
+      matrix: 
+        config: 
+          - os: macos-latest
+            kind: mac
+          - os: ubuntu-latest
+            kind: linux
+    steps:
+      - name: Setup configs
+        env:
+          os_type: format('all-{0}', ${{ matrix.config.kind }})
+        run: make $os_type
+ 
+
